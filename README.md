@@ -16,6 +16,10 @@ It currently includes a text-mode launcher plus a small app suite:
 - `QLnotes`, a pinned note board with tasks and tags
 - `QLmusic`, a lightweight player with a queue and EQ view
 - `QLsettings`, a system panel for theme, input, and power
+- `QLfetch`, a Fastfetch-style banner with logo and system stats
+- `QLterm`, a terminal with commands and sample shell output
+
+The terminal demo now accepts commands such as `help`, `ls /apps`, `echo hello`, and `stats pc` for the logo-based PC stats view.
 
 ## Layout
 

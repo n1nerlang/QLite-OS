@@ -11,6 +11,8 @@ pub enum AppId {
     Notes,
     Music,
     Settings,
+    Fastfetch,
+    Terminal,
 }
 
 pub struct AppCard {
@@ -59,6 +61,16 @@ pub const APPS: &[AppCard] = &[
         id: AppId::Settings,
         title: "QLsettings",
         subtitle: "A system panel for theme, input, and power controls",
+    },
+    AppCard {
+        id: AppId::Fastfetch,
+        title: "QLfetch",
+        subtitle: "A fast system banner with logo, specs, and uptime",
+    },
+    AppCard {
+        id: AppId::Terminal,
+        title: "QLterm",
+        subtitle: "A command terminal for launching tools and scripts",
     },
 ];
 
@@ -203,6 +215,65 @@ pub fn render_settings<W: Write>(out: &mut W) -> fmt::Result {
     Ok(())
 }
 
+pub fn render_fastfetch<W: Write>(out: &mut W) -> fmt::Result {
+    render_pc_stats(out)
+}
+
+pub fn render_pc_stats<W: Write>(out: &mut W) -> fmt::Result {
+    let logo = [
+        "  ____  _ _ _        ",
+        " / __ \\/ (_) |       ",
+        "/ /_/ / / / /___ ___ ",
+        "\\____/_/_/_____//___/ ",
+    ];
+
+    let fields = [
+        ("OS", "QLite-OS"),
+        ("Host", "QLite Board X1"),
+        ("Kernel", "qlite-kernel 0.1"),
+        ("Shell", "QLterm"),
+        ("Uptime", "00:42"),
+        ("Packages", "11 apps"),
+    ];
+
+    writeln!(out, "QLfetch")?;
+    writeln!(out, "-------")?;
+    for line in logo.iter() {
+        writeln!(out, "{}", line)?;
+    }
+    writeln!(out, "")?;
+    for (name, value) in fields.iter() {
+        writeln!(out, "{}: {}", name, value)?;
+    }
+    writeln!(out, "Theme: quartz")?;
+    writeln!(out, "CPU: virtual 1 core @ 3.2 GHz")?;
+    writeln!(out, "Memory: 3 MB used / 16 MB total")?;
+    writeln!(out, "Disk: 128 MB image / 64 MB free")?;
+    writeln!(out, "GPU: VGA text mode")?;
+    Ok(())
+}
+
+pub fn render_terminal<W: Write>(out: &mut W) -> fmt::Result {
+    writeln!(out, "QLterm")?;
+    writeln!(out, "------")?;
+    let session = [
+        "help",
+        "stats pc",
+        "ls /apps",
+        "echo hello",
+        "clear",
+    ];
+
+    for command in session.iter() {
+        writeln!(out, "qlite@local:~$ {}", command)?;
+        execute_terminal_command(command, out)?;
+    }
+
+    writeln!(out, "qlite@local:~$ ")?;
+    writeln!(out, "cursor: █")?;
+    Ok(())
+}
+
 pub fn render_showcase<W: Write>(out: &mut W) -> fmt::Result {
     render_launcher(out)?;
     writeln!(out, "")?;
@@ -221,7 +292,117 @@ pub fn render_showcase<W: Write>(out: &mut W) -> fmt::Result {
     render_music(out)?;
     writeln!(out, "")?;
     render_settings(out)?;
+    writeln!(out, "")?;
+    render_fastfetch(out)?;
+    writeln!(out, "")?;
+    render_terminal(out)?;
     Ok(())
+}
+
+fn terminal_fetch() -> &'static str {
+    "QLite-OS 0.1 | freestanding text desktop | ready"
+}
+
+fn execute_terminal_command<W: Write>(command: &str, out: &mut W) -> fmt::Result {
+    let trimmed = trim_ascii(command);
+    if trimmed.is_empty() {
+        return Ok(());
+    }
+
+    let mut parts = trimmed.split_whitespace();
+    let verb = parts.next().unwrap_or("");
+
+    match verb {
+        "help" => {
+            writeln!(out, "commands: help stats pc ls cat echo fetch clear")?;
+        }
+        "stats" => match parts.next() {
+            Some("pc") => {
+                render_pc_stats(out)?;
+            }
+            Some(other) => {
+                writeln!(out, "stats: unknown target '{}'", other)?;
+            }
+            None => {
+                writeln!(out, "usage: stats pc")?;
+            }
+        },
+        "fetch" => {
+            render_pc_stats(out)?;
+        }
+        "ls" => {
+            let path = parts.next().unwrap_or("/");
+            render_ls(path, out)?;
+        }
+        "cat" => {
+            let path = parts.next().unwrap_or("");
+            render_cat(path, out)?;
+        }
+        "echo" => {
+            let message = trimmed.strip_prefix("echo").unwrap_or("").trim_start();
+            writeln!(out, "{}", message)?;
+        }
+        "clear" => {
+            writeln!(out, "[screen cleared]")?;
+        }
+        _ => {
+            writeln!(out, "{}: command not found", verb)?;
+        }
+    }
+
+    Ok(())
+}
+
+fn render_ls<W: Write>(path: &str, out: &mut W) -> fmt::Result {
+    match path {
+        "/" => {
+            writeln!(out, "boot  c  docs  rust")?;
+        }
+        "/apps" => {
+            writeln!(out, "QLsearch  QLstudio  QLpaint  QLcalc  QLnotes")?;
+        }
+        "/rust" => {
+            writeln!(out, "kernel.rs  apps.rs")?;
+        }
+        _ => {
+            writeln!(out, "ls: cannot access '{}': no such file or directory", path)?;
+        }
+    }
+    Ok(())
+}
+
+fn render_cat<W: Write>(path: &str, out: &mut W) -> fmt::Result {
+    match path {
+        "/motd" => {
+            writeln!(out, "welcome to QLite-OS")?;
+        }
+        "/readme" => {
+            writeln!(out, "freestanding rust + c + asm prototype")?;
+        }
+        "" => {
+            writeln!(out, "cat: missing file operand")?;
+        }
+        _ => {
+            writeln!(out, "cat: {}: not found", path)?;
+        }
+    }
+    Ok(())
+}
+
+fn trim_ascii(text: &str) -> &str {
+    let bytes = text.as_bytes();
+    let mut start = 0usize;
+    let mut end = bytes.len();
+
+    while start < end && bytes[start].is_ascii_whitespace() {
+        start += 1;
+    }
+
+    while end > start && bytes[end - 1].is_ascii_whitespace() {
+        end -= 1;
+    }
+
+    &text[start..end]
 }
 
 fn search_index(query: &str) -> [&'static str; 3] {
