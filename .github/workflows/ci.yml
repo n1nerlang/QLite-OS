@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate freestanding C and assembly
+        run: |
+          gcc -ffreestanding -fno-builtin -fno-stack-protector -Wall -Wextra -c c/runtime.c -o /tmp/qlite-runtime.o
+          gcc -c boot/boot.S -o /tmp/qlite-boot.o
+
+      - name: Validate docs and icons layout
+        run: |
+          test -f README.md
+          test -f docs/architecture.md
+          test -f docs/apps.md
+          test -f docs/terminal.md
+          test -f docs/roadmap.md
+          test -f icons/.gitkeep

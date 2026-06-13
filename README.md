@@ -28,6 +28,26 @@ The terminal demo now accepts commands such as `help`, `ls /apps`, `echo hello`,
 - `rust/kernel.rs` - Rust kernel entry and VGA writer
 - `rust/apps.rs` - app registry and renderers
 - `Makefile` - build scaffold
+- `docs/` - expanded project notes and app docs
+- `icons/` - icon assets placeholder
+
+## Docs
+
+- [Architecture](docs/architecture.md)
+- [Apps](docs/apps.md)
+- [Terminal](docs/terminal.md)
+- [Roadmap](docs/roadmap.md)
+
+## Project Docs
+
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+- [Security](SECURITY.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## Icons
+
+The repository currently uses [icons/.gitkeep](icons/.gitkeep) as the placeholder for future uploaded images or app icons.
 
 ## Notes
 
