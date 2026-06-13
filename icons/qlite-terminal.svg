@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLite terminal icon">
+  <rect width="256" height="256" rx="40" fill="#0f172a"/>
+  <rect x="32" y="48" width="192" height="160" rx="20" fill="#111827" stroke="#38bdf8" stroke-width="6"/>
+  <path d="M62 86l28 28-28 28" fill="none" stroke="#f8fafc" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M112 142h60" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
+  <path d="M62 176h132" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+</svg>

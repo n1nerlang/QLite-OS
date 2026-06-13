@@ -29,6 +29,7 @@ The terminal demo now accepts commands such as `help`, `ls /apps`, `echo hello`,
 - `rust/apps.rs` - app registry and renderers
 - `Makefile` - build scaffold
 - `docs/` - expanded project notes and app docs
+- `fonts/` - text-based font assets and samples
 - `icons/` - icon assets placeholder
 
 ## Docs
@@ -47,7 +48,11 @@ The terminal demo now accepts commands such as `help`, `ls /apps`, `echo hello`,
 
 ## Icons
 
-The repository currently uses [icons/.gitkeep](icons/.gitkeep) as the placeholder for future uploaded images or app icons.
+The repository now includes [icons/qlite-logo.svg](icons/qlite-logo.svg), [icons/qlite-terminal.svg](icons/qlite-terminal.svg), and a per-app icon set in [icons/README.md](icons/README.md).
+
+## Fonts
+
+The current font asset lives in [fonts/qlite-5x7.font.txt](fonts/qlite-5x7.font.txt), with usage notes in [fonts/README.md](fonts/README.md).
 
 ## Notes
 

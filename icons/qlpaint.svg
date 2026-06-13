@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLpaint icon">
+  <rect width="256" height="256" rx="40" fill="#1e1b4b"/>
+  <path d="M78 168c0-28 22-50 50-50s50 22 50 50c0 14-8 28-20 36-13 9-27 12-42 12H98c-11 0-20-9-20-20z" fill="#f59e0b"/>
+  <circle cx="102" cy="114" r="12" fill="#f8fafc"/>
+  <path d="M158 74l24 24" stroke="#f8fafc" stroke-width="12" stroke-linecap="round"/>
+  <path d="M170 66l12 12" stroke="#38bdf8" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLterm icon">
+  <rect width="256" height="256" rx="40" fill="#111827"/>
+  <rect x="40" y="52" width="176" height="152" rx="18" fill="#0b1220" stroke="#38bdf8" stroke-width="6"/>
+  <path d="M70 98l24 24-24 24" fill="none" stroke="#f8fafc" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M112 146h72" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
+  <path d="M70 176h116" stroke="#22c55e" stroke-width="8" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLite logo">
+  <rect width="256" height="256" rx="40" fill="#111827"/>
+  <path d="M64 72h96a24 24 0 0 1 24 24v40a24 24 0 0 1-24 24H88l-24 24V72z" fill="#38bdf8"/>
+  <path d="M96 96h48a12 12 0 0 1 12 12v16a12 12 0 0 1-12 12H96V96z" fill="#0f172a" opacity="0.35"/>
+  <circle cx="180" cy="176" r="20" fill="#f8fafc"/>
+  <path d="M172 176l8-12 8 12-8 12z" fill="#111827"/>
+</svg>

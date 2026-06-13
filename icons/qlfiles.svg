@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLfiles icon">
+  <rect width="256" height="256" rx="40" fill="#1b2430"/>
+  <path d="M54 86h58l18 18h72v84H54z" fill="#0f172a" stroke="#38bdf8" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M78 130h100" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
+  <path d="M78 154h72" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="176" cy="156" r="14" fill="#f59e0b"/>
+</svg>

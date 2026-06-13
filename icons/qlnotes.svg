@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLnotes icon">
+  <rect width="256" height="256" rx="40" fill="#172554"/>
+  <rect x="60" y="44" width="136" height="168" rx="18" fill="#eff6ff"/>
+  <path d="M88 86h80M88 118h60M88 150h72" stroke="#1d4ed8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M152 44v40h40" fill="#bfdbfe"/>
+  <path d="M152 44l40 40" stroke="#1d4ed8" stroke-width="5"/>
+</svg>

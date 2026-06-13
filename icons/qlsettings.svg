@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="QLsettings icon">
+  <rect width="256" height="256" rx="40" fill="#0f172a"/>
+  <circle cx="128" cy="128" r="34" fill="#38bdf8"/>
+  <circle cx="128" cy="128" r="14" fill="#0f172a"/>
+  <path d="M128 66v18M128 172v18M66 128h18M172 128h18M84 84l12 12M160 160l12 12M84 172l12-12M160 96l12-12" stroke="#f8fafc" stroke-width="10" stroke-linecap="round"/>
+</svg>
